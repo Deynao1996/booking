@@ -6,8 +6,8 @@ const client = axios.create({
   credentials: 'include',
   headers: { 'Access-Control-Allow-Credentials': true }
 })
+
 export const request = ({ ...options }) => {
-  console.log(process.env.REACT_APP_API)
   const onSuccess = (response) => response
   const onError = (error) => {
     const {
