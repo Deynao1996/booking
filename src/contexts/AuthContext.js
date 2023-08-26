@@ -41,8 +41,14 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    axios
-      .get('/auth/login/with-jwt')
+    const axiosCfg = {
+      url: `${process.env.REACT_APP_API}/auth/login/with-jwt`,
+      method: 'get',
+      withCredentials: true,
+      credentials: 'include',
+      headers: { 'Access-Control-Allow-Credentials': true }
+    }
+    axios(axiosCfg)
       .then(saveCurrentUser)
       .catch((e) => {
         if (e.response?.status === 401) logout()
