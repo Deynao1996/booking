@@ -47,7 +47,7 @@ const SignInPage = () => {
   const { enqueueSnackbar } = useSnackbar()
 
   function redirectToPassport(type) {
-    window.open(`http://localhost:8800/api/passport/${type}`, '_self')
+    window.open(`${process.env.REACT_APP_API}/passport/${type}`, '_self')
   }
 
   async function showVerifyModal() {
