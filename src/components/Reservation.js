@@ -124,13 +124,11 @@ const Reservation = ({
   }
 
   async function startPayment(order) {
-    console.log(order)
     setIsCheckoutLoading(true)
     const { hotelImage: image } = hotelInfo
 
     try {
       const res = await sendPayment({ ...order, image })
-      console.log(res)
       if (res.data.url) {
         window.location.href = res.data.url
       }
@@ -199,7 +197,9 @@ const Reservation = ({
 
   function renderRooms() {
     if (!data) return
-    return data.map(({ _id, title, descr, price, roomNumbers, maxPeople }) => {
+    return data.map((item) => {
+      if (!item) return
+      const { _id, title, descr, price, roomNumbers, maxPeople } = item
       const currentPrice = days * price * searchParams.room
 
       return (

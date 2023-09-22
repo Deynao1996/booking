@@ -115,7 +115,6 @@ const View = ({ type, userId, token }) => {
   }
 
   function onError(e) {
-    console.log(e)
     enqueueSnackbar(e.message, { variant: 'error' })
   }
 
