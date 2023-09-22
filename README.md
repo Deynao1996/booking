@@ -9,7 +9,7 @@ Explore Booking, a feature-rich hotel booking platform with dark and light theme
 
 ## Live Demo
 
-Check out the live demo of Booking: [Booking Live Demo](https://dbvision-bookig.netlify.app)
+Check out the live demo of Booking: [Booking Live Demo](https://dbvision-booking.netlify.app)
 
 
 Please note that some functionality in this demo has been limited for security reasons. Additionally, hotel images and information were sourced from [Booking.com](https://www.booking.com/) for a realistic demo experience without any commercial goals.
