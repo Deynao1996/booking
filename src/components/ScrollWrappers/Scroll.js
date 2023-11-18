@@ -1,8 +1,14 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router'
+import LocomotiveScroll from 'locomotive-scroll'
 
-const ScrollToTop = (props) => {
+const Scroll = (props) => {
   const location = useLocation()
+
+  useEffect(() => {
+    new LocomotiveScroll()
+  }, [location])
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location])
@@ -10,4 +16,4 @@ const ScrollToTop = (props) => {
   return <>{props.children}</>
 }
 
-export default ScrollToTop
+export default Scroll

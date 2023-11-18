@@ -24,7 +24,7 @@ const Stay = () => {
         <Box
           sx={{
             position: 'absolute',
-            top: 0,
+            bottom: 0,
             left: 0,
             width: '100%',
             height: '100%'
@@ -33,12 +33,15 @@ const Stay = () => {
           <img
             src={artwork}
             alt="stay-background"
+            data-scroll
+            data-scroll-speed="0.1"
             style={{
               objectFit: 'cover',
               width: '120%',
-              height: '110%',
+              height: '140%',
               position: 'relative',
-              left: '-10%'
+              left: '-10%',
+              bottom: '10%'
             }}
           />
         </Box>

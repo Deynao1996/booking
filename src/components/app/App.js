@@ -6,7 +6,7 @@ import HotelsPage from '../../pages/HotelsPage'
 import MainPage from '../../pages/MainPage'
 import SingleHotelPage from '../../pages/SingleHotelPage'
 import ResetPasswordPage from '../../pages/ResetPasswordPage'
-import ScrollToTop from '../ScrollWrappers/ScrollToTop'
+import Scroll from '../ScrollWrappers/Scroll'
 import { ThemeProvider } from '../../contexts/ThemeContext'
 import { SnackbarProvider } from 'notistack'
 import SignInPage from '../../pages/SignInPage'
@@ -21,7 +21,7 @@ const App = () => {
       <AuthProvider>
         <SearchProvider>
           <ThemeProvider>
-            <ScrollToTop>
+            <Scroll>
               <Disclaimer />
               <Routes>
                 <Route path="/" element={<MainLayout />}>
@@ -50,7 +50,7 @@ const App = () => {
                   <Route path="*" element={<ErrorPage />} />
                 </Route>
               </Routes>
-            </ScrollToTop>
+            </Scroll>
           </ThemeProvider>
         </SearchProvider>
       </AuthProvider>

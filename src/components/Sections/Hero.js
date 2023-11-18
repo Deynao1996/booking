@@ -1,10 +1,10 @@
 import { Box, Button, Typography, useMediaQuery } from '@mui/material'
 import { useThemeProvider } from '../../contexts/ThemeContext'
-import BackgroundImage from '../BackgroundImage'
 import { StyledLink } from '../DesktopNav'
 import SearchBar from '../SearchBar/SearchBar'
 import { Login } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+import ImageSlider from '../ImageSlider'
 
 const Hero = () => {
   const { theme } = useThemeProvider()
@@ -135,7 +135,7 @@ const Hero = () => {
             border: `1px solid ${theme.palette.primary.main}`
           }}
         >
-          <BackgroundImage />
+          <ImageSlider />
         </Box>
       </Box>
     </Box>

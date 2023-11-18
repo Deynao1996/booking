@@ -10,7 +10,7 @@ import HotelInfo from '../components/SingleHotel/HotelInfo'
 import ReserveDialog from '../components/ModalUI/ReserveDialog'
 import CustomLightBox from '../components/SingleHotel/CustomLightBox'
 
-import 'react-image-lightbox/style.css'
+import 'react-18-image-lightbox/style.css'
 
 const SingleHotel = () => {
   const { hotelId } = useParams()

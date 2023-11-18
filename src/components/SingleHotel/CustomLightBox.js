@@ -1,5 +1,5 @@
 import React from 'react'
-import Lightbox from 'react-image-lightbox'
+import Lightbox from 'react-18-image-lightbox'
 
 const CustomLightBox = ({ data, boxState, setBoxState }) => {
   return (
