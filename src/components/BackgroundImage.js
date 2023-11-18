@@ -12,24 +12,11 @@ const BackgroundImage = () => {
   )
 
   return (
-    <Box
-      sx={{
-        width: '100%',
-        height: '100%',
-        margin: 0,
-        padding: 0,
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        zIndex: -1
-      }}
-    >
-      <img
-        src={imageUrl}
-        alt="background-image"
-        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-      />
-    </Box>
+    <img
+      src={imageUrl}
+      alt="background-image"
+      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+    />
   )
 }
 

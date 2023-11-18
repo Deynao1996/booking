@@ -2,7 +2,7 @@ import { CssBaseline } from '@mui/material'
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Header from '../components/header/Header'
-import Newsletter from '../components/Newsletter'
+import Features from '../components/Sections/Features'
 
 const MainLayout = () => {
   return (
@@ -10,7 +10,8 @@ const MainLayout = () => {
       <CssBaseline enableColorScheme />
       <Header />
       <Outlet />
-      <Newsletter />
+      <Features />
+      {/* <Newsletter /> */}
       <Footer />
     </>
   )

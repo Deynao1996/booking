@@ -18,7 +18,7 @@ const CustomSkeleton = ({ type, count = 1 }) => {
           return (
             <Grid item xs={12} sm={4} key={i}>
               <Card>
-                <Skeleton variant="rectangular" height={200} width={'100%'} />
+                <Skeleton variant="rectangular" height={250} width={'100%'} />
                 <CardContent>
                   <Skeleton variant="text" sx={{ height: 30, width: '40%' }} />
                   <Skeleton variant="text" height={15} width={'35%'} />
@@ -36,9 +36,9 @@ const CustomSkeleton = ({ type, count = 1 }) => {
       <Grid container spacing={3}>
         {[...Array(count)].map((_, i) => {
           return (
-            <Grid item xs={12} sm={2.4} key={i}>
+            <Grid item xs={12} md={2.4} key={i}>
               <Card>
-                <Skeleton variant="rectangular" height={140} width={'100%'} />
+                <Skeleton variant="rectangular" height={450} width={'100%'} />
                 <CardContent sx={{ px: 1 }}>
                   <Skeleton variant="text" sx={{ height: 30, width: '50%' }} />
                   <Skeleton variant="text" height={15} width={'35%'} />
@@ -56,9 +56,9 @@ const CustomSkeleton = ({ type, count = 1 }) => {
       <Grid container spacing={3}>
         {[...Array(count)].map((_, i) => {
           return (
-            <Grid item xs={12} sm={6} md={3} key={i}>
+            <Grid item xs={12} sm={6} md={2.4} key={i}>
               <Card elevation={4}>
-                <Skeleton variant="rectangular" height={300} width={'100%'} />
+                <Skeleton variant="rectangular" height={400} width={'100%'} />
                 <CardContent sx={{ px: 1 }}>
                   <Skeleton
                     variant="text"

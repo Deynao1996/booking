@@ -1,13 +1,25 @@
 import styled from '@emotion/styled'
-import { Facebook, GitHub, Instagram, Telegram } from '@mui/icons-material'
 import {
+  Euro,
+  Facebook,
+  GitHub,
+  Instagram,
+  Telegram
+} from '@mui/icons-material'
+import {
+  Button,
   Grid,
   IconButton,
   Link,
   List,
   ListItem,
+  Paper,
   Typography
 } from '@mui/material'
+import Copyright from './Copyright'
+import { useCallback } from 'react'
+import { useState } from 'react'
+import NewsletterDialog from './ModalUI/NewsletterDialog'
 
 export const StyledListTitle = styled(Link)(({ theme }) => ({
   color:
@@ -42,6 +54,13 @@ const informationArr = ['license', 'privacy policy', 'releases', 'FAQ']
 const aboutArr = ['about', 'contact', 'team', 'support']
 
 const Footer = () => {
+  const [isNewsletterOpen, setIsNewsletterOpen] = useState(false)
+
+  const handleNewsletterToggle = useCallback(
+    (state) => setIsNewsletterOpen(state),
+    [setIsNewsletterOpen]
+  )
+
   function renderList(arr) {
     return (
       <List>
@@ -64,28 +83,14 @@ const Footer = () => {
     <>
       <Grid
         container
+        component={Paper}
+        elevation={8}
         sx={{
-          py: 6,
-          px: 2,
-          bgcolor: (theme) =>
-            theme.palette.mode === 'dark' ? '#192D36' : 'rgba(0, 0, 0, 0.04)'
+          pt: 6,
+          pb: 2,
+          px: 2
         }}
       >
-        <Grid item xs={12} sm={12} md={3}>
-          <List>
-            <ListItem>
-              <Typography variant="h4">Booking</Typography>
-            </ListItem>
-            <ListItem>
-              <Typography variant="body2">
-                Architect VR, 830-1183 BKK Thailand 10220
-              </Typography>
-            </ListItem>
-            <ListItem>
-              <Typography variant="body2">admin@arc.fake</Typography>
-            </ListItem>
-          </List>
-        </Grid>
         <Grid item xs={6} sm={4} md={2}>
           {renderList(categoriesArr)}
         </Grid>
@@ -95,28 +100,47 @@ const Footer = () => {
         <Grid item xs={12} sm={4} md={2}>
           {renderList(aboutArr)}
         </Grid>
-        <Grid item xs={12} sm={12} md={3}>
-          <List>
+        <Grid item md={2} />
+        <Grid item xs={12} sm={6} md={4}>
+          <List sx={{ mt: { xs: 4, md: 0 } }}>
             <ListItem>
-              <StyledListTitle underline="none">Subscribe</StyledListTitle>
+              <StyledListTitle underline="none">NEWSLETTER</StyledListTitle>
             </ListItem>
             <ListItem>
-              <IconButton aria-label="delete">
-                <Facebook />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Instagram />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <GitHub />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <Telegram />
-              </IconButton>
+              <Link
+                underline="none"
+                color={'inherit'}
+                sx={(theme) => ({
+                  color:
+                    theme.palette.mode === 'dark'
+                      ? 'rgba(255, 255, 255, 0.7)'
+                      : 'rgba(0, 0, 0, 0.54)'
+                })}
+              >
+                Get 10% off on your first order. We’ll only send you updates on
+                new releases and exclusive offers, promise.
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Button
+                onClick={() => handleNewsletterToggle(true)}
+                variant="contained"
+                endIcon={<Euro />}
+                sx={{ width: { xs: '70%', sm: '50%' }, mt: 1 }}
+              >
+                Get 10%
+              </Button>
             </ListItem>
           </List>
         </Grid>
+        <Grid item xs={12} sx={{ mt: 8 }}>
+          <Copyright />
+        </Grid>
       </Grid>
+      <NewsletterDialog
+        isNewsletterOpen={isNewsletterOpen}
+        handleNewsletter={handleNewsletterToggle}
+      />
     </>
   )
 }

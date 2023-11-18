@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { AuthProvider } from '../../contexts/AuthContext'
 import AuthLayout from '../../layouts/AuthLayout'
-import HotelsLayout from '../../layouts/HotelsLayout'
 import MainLayout from '../../layouts/MainLayout'
 import HotelsPage from '../../pages/HotelsPage'
 import MainPage from '../../pages/MainPage'
@@ -29,7 +28,7 @@ const App = () => {
                   <Route index element={<MainPage />} />
                   <Route path="houses/:hotelId" element={<SingleHotelPage />} />
                 </Route>
-                <Route path="houses" element={<HotelsLayout />}>
+                <Route path="houses" element={<MainLayout />}>
                   <Route index element={<HotelsPage />} />
                 </Route>
                 <Route path="auth" element={<AuthLayout />}>

@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -11,6 +12,7 @@ import { StyledLink } from '../components/DesktopNav'
 import { getFloatRating, getOpinion } from '../components/Lists/HotelsList'
 import { capitalizeString } from './capitalize-string-utils'
 import { getCroppedImageUrl } from './crop-url-utils'
+import Marquee from 'react-fast-marquee'
 
 export function renderProperties(data) {
   return (
@@ -20,11 +22,11 @@ export function renderProperties(data) {
         const imageUrl = getCroppedImageUrl(
           property.img,
           /(upload\/)(.*)/,
-          '$1c_fill,g_auto,h_200,w_300/$2'
+          '$1c_fill,g_auto,h_550,w_300/$2'
         )
 
         return (
-          <Grid item xs={12} sm={2.4} key={property.type}>
+          <Grid item xs={12} md={2.4} key={property.type}>
             <Card elevation={0}>
               <CardActionArea>
                 <StyledLink
@@ -33,7 +35,7 @@ export function renderProperties(data) {
                 >
                   <CardMedia
                     component="img"
-                    height="140"
+                    height="450"
                     image={imageUrl}
                     alt={property.type}
                   />
@@ -68,7 +70,7 @@ export function renderCities(data) {
         const imageUrl = getCroppedImageUrl(
           city.cityImg,
           /(upload\/)(.*)/,
-          '$1c_fill,g_auto,h_300,w_500/$2'
+          '$1c_fill,g_auto,h_400,w_500/$2'
         )
         return (
           <Grid item xs={12} sm={4} key={city._id}>
@@ -80,7 +82,7 @@ export function renderCities(data) {
                 >
                   <CardMedia
                     component="img"
-                    height="200"
+                    height="250"
                     image={imageUrl}
                     alt={capitalizedCity}
                   />
@@ -109,7 +111,7 @@ export function renderCities(data) {
 
 export function renderHomes(data) {
   return (
-    <Grid container spacing={3}>
+    <Marquee direction="right" speed={30} style={{ paddingBottom: '1rem' }}>
       {data?.data.hotels.map((home) => {
         const floatRating = getFloatRating(home.rating)
         const imageUrl = getCroppedImageUrl(
@@ -119,8 +121,8 @@ export function renderHomes(data) {
         )
 
         return (
-          <Grid item xs={12} sm={6} md={3} key={home._id}>
-            <Card elevation={4}>
+          <Box key={home._id}>
+            <Card elevation={4} sx={{ width: '300px', mx: 3 }}>
               <CardActionArea>
                 <StyledLink
                   to={`houses/${home._id}`}
@@ -128,30 +130,30 @@ export function renderHomes(data) {
                 >
                   <CardMedia
                     component="img"
-                    height="300"
+                    height="400"
                     image={imageUrl}
                     alt={home.name}
                   />
                   <CardContent sx={{ px: 1 }}>
                     <Typography
                       gutterBottom
-                      variant="h5"
+                      variant="subtitle1"
                       noWrap
                       component="div"
+                      fontWeight={'bold'}
                       textTransform={'capitalize'}
                     >
                       {home.name}
                     </Typography>
                     <Typography
-                      variant="body1"
+                      variant="subtitle2"
                       color="text.secondary"
                       textTransform={'capitalize'}
-                      fontWeight="bold"
                     >
                       {home.city}
                     </Typography>
                     <Typography
-                      variant="body2"
+                      variant="caption"
                       color="text.secondary"
                       marginY={1}
                     >
@@ -164,7 +166,8 @@ export function renderHomes(data) {
                       sx={{
                         display: 'flex',
                         justifyContent: 'space-between',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        mt: 1
                       }}
                     >
                       <Rating
@@ -175,16 +178,20 @@ export function renderHomes(data) {
                       />
                       <div>{floatRating}</div>
                     </Typography>
-                    <Typography variant="body2" align="right">
+                    <Typography
+                      variant="body2"
+                      align="right"
+                      color="text.secondary"
+                    >
                       {getOpinion(home.rating)}
                     </Typography>
                   </CardContent>
                 </StyledLink>
               </CardActionArea>
             </Card>
-          </Grid>
+          </Box>
         )
       })}
-    </Grid>
+    </Marquee>
   )
 }

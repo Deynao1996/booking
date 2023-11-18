@@ -5,16 +5,13 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Typography
+  ListItemText
 } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
-import SwitchColorTheme from '../SwitchColorTheme'
+import { Link, useLocation } from 'react-router-dom'
 import { navLinks } from '../../data/nav-items-data'
 import styled from '@emotion/styled'
-
-const DRAWER_WIDTH = 240
+import MobileHeaderActions from '../header/MobileHeaderActions'
+import Copyright from '../Copyright'
 
 const StyledLink = styled(Link, {
   shouldForwardProp: (prop) => prop !== 'isDisabled'
@@ -25,20 +22,20 @@ const StyledLink = styled(Link, {
   width: '100%'
 }))
 
-const CustomDrawer = ({ handleDrawer, container, mobileOpen }) => {
-  const navigate = useNavigate()
-
-  function handleDrawerClick(to) {
-    navigate(to)
-    handleDrawer(false)
-  }
+const HeaderDrawer = ({ handleDrawer, container, mobileOpen }) => {
+  const { pathname } = useLocation()
 
   function renderDrawerItems() {
     return navLinks.map((item) => (
       <ListItem key={item.label} disableGutters>
         <StyledLink to={item.to} isDisabled={item.isDisabled}>
-          <ListItemButton sx={{ textAlign: 'start' }}>
-            <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemButton
+            sx={{
+              textAlign: 'start',
+              textDecoration:
+                pathname === item.to && !item.isDisabled ? 'underline' : 'none'
+            }}
+          >
             <ListItemText primary={item.label} />
           </ListItemButton>
         </StyledLink>
@@ -47,19 +44,24 @@ const CustomDrawer = ({ handleDrawer, container, mobileOpen }) => {
   }
 
   const drawer = (
-    <Box sx={{ textAlign: 'center' }}>
-      <Typography
-        variant="h6"
-        sx={{ m: 2, cursor: 'pointer' }}
-        onClick={() => handleDrawerClick('/')}
-        align="left"
-      >
-        Booking
-      </Typography>
-      <Divider />
-      <List>{renderDrawerItems()}</List>
-      <Divider />
-      <SwitchColorTheme isMobile />
+    <Box
+      sx={{
+        textAlign: 'center',
+        px: 5,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}
+    >
+      <Box sx={{ flex: 1 }}>
+        <List sx={{ mt: 10 }}>{renderDrawerItems()}</List>
+        <Divider />
+        <MobileHeaderActions />
+      </Box>
+      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', pb: 5 }}>
+        <Copyright mt={'auto'} />
+      </Box>
     </Box>
   )
 
@@ -68,16 +70,14 @@ const CustomDrawer = ({ handleDrawer, container, mobileOpen }) => {
       <Drawer
         container={container}
         variant="temporary"
+        anchor="top"
         open={mobileOpen}
         onClose={() => handleDrawer(false)}
-        ModalProps={{
-          keepMounted: true
-        }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
+          zIndex: 900,
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
-            width: DRAWER_WIDTH
+            height: '100svh'
           }
         }}
       >
@@ -87,4 +87,4 @@ const CustomDrawer = ({ handleDrawer, container, mobileOpen }) => {
   )
 }
 
-export default CustomDrawer
+export default HeaderDrawer

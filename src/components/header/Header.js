@@ -1,69 +1,45 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
-import { Login, PersonAddAlt1 } from '@mui/icons-material'
+import { Close } from '@mui/icons-material'
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   Toolbar,
   Typography,
   useMediaQuery
 } from '@mui/material'
-import { useAuthProvider } from '../../contexts/AuthContext'
-import UserInfo from './UserInfo'
-import CustomDrawer from './CustomDrawer'
-import SwitchColorTheme from '../SwitchColorTheme'
+import HeaderDrawer from '../DrawerUI/HeaderDrawer'
 import { useThemeProvider } from '../../contexts/ThemeContext'
 import HideOnScroll from '../ScrollWrappers/HideOnScroll'
-
-const offlineHeaderLinks = [
-  {
-    label: 'Login',
-    to: '/auth/login',
-    icon: <Login />,
-    withCurrentUser: false
-  },
-  {
-    label: 'Register',
-    to: '/auth/register',
-    icon: <PersonAddAlt1 />,
-    withCurrentUser: false
-  }
-]
+import DesktopNav from '../DesktopNav'
+import HeaderActions from './HeaderActions'
+import HeaderMarquee from './HeaderMarquee'
+import SearchDrawer from '../DrawerUI/SearchDrawer'
 
 const Header = (props) => {
   const { window } = props
-  const { currentUser } = useAuthProvider()
   const { theme } = useThemeProvider()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const navigate = useNavigate()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'))
 
   const container = useMemo(
     () => (window !== undefined ? () => window().document.body : undefined),
     [window]
   )
 
-  const handleDrawer = useCallback(
+  const handleMobileDrawer = useCallback(
     (state) => setMobileOpen(state),
     [setMobileOpen]
   )
 
-  function renderBarItems() {
-    return offlineHeaderLinks.map((item) => (
-      <Button
-        key={item.label}
-        role="Link"
-        aria-label="Navigate"
-        sx={{ color: '#fff' }}
-        onClick={() => navigate(item.to)}
-      >
-        {item.label}
-      </Button>
-    ))
-  }
+  const handleSearchDrawer = useCallback(
+    (state) => setSearchOpen(state),
+    [setSearchOpen]
+  )
 
   return (
     <>
@@ -73,54 +49,70 @@ const Header = (props) => {
           position="sticky"
           sx={(theme) => ({
             zIndex: '999',
+            width: searchOpen ? '100vw' : '100%',
             backgroundColor:
               theme.palette.mode === 'light'
                 ? 'rgba(25, 118, 210, 0.8)'
                 : 'rgba(16, 20, 24, 0.8)',
-            backdropFilter: 'blur(8px)'
+            backdropFilter: 'blur(8px)',
+            transition: 'width 0.2s ease-in-out'
           })}
         >
+          <HeaderMarquee />
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={() => handleDrawer(true)}
+            {!isTablet && <DesktopNav />}
+            <Box
               sx={{
-                mr: 2,
-                display: { sm: 'none' },
+                flex: 1,
+                display: { md: 'none' },
                 justifyContent: 'flex-start'
               }}
             >
-              <MenuIcon />
-            </IconButton>
+              <IconButton
+                color="inherit"
+                aria-label="toggle drawer"
+                edge="start"
+                onClick={() => handleMobileDrawer((prevState) => !prevState)}
+              >
+                {mobileOpen ? <Close /> : <MenuIcon />}
+              </IconButton>
+            </Box>
             <Box
               sx={{
-                flexGrow: 1,
-                display: { xs: 'none', sm: 'block' }
+                flex: 1,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
               }}
             >
               <Typography
-                variant="h6"
+                variant={isTablet ? 'h4' : 'h6'}
                 component="span"
                 sx={{
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  fontWeight: 'bold'
                 }}
                 onClick={() => navigate('/')}
               >
-                Booking
+                {isTablet ? 'B' : 'Booking'}
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', ml: 'auto' }}>
-              {!isMobile && <SwitchColorTheme />}
-              {currentUser ? <UserInfo /> : renderBarItems()}
-            </Box>
+            <HeaderActions
+              handleSearchDrawer={handleSearchDrawer}
+              searchOpen={searchOpen}
+            />
           </Toolbar>
+          <SearchDrawer
+            handleSearchDrawer={handleSearchDrawer}
+            searchOpen={searchOpen}
+            container={container}
+          />
         </AppBar>
       </HideOnScroll>
-      {isMobile && (
-        <CustomDrawer
-          handleDrawer={handleDrawer}
+
+      {isTablet && (
+        <HeaderDrawer
+          handleMobileDrawer={handleMobileDrawer}
           container={container}
           mobileOpen={mobileOpen}
         />
