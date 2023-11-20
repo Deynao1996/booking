@@ -6,9 +6,10 @@ const HideOnScroll = (props) => {
   const trigger = useScrollTrigger({
     target: window ? window() : undefined
   })
+  const handleIn = props.disabled ? false : trigger
 
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
+    <Slide appear={false} direction="down" in={!handleIn}>
       {children}
     </Slide>
   )

@@ -11,7 +11,6 @@ const MainLayout = () => {
       <Header />
       <Outlet />
       <Features />
-      {/* <Newsletter /> */}
       <Footer />
     </>
   )

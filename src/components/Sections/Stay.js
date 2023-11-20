@@ -86,7 +86,7 @@ const Stay = () => {
             <TitleSquares />
             <Typography
               variant="h3"
-              component="h5"
+              component="h4"
               sx={(theme) => ({
                 fontWeight: 'bold',
                 textAlign: 'center',
@@ -102,7 +102,7 @@ const Stay = () => {
 
             <Typography
               variant="h6"
-              component="h6"
+              component="h5"
               sx={(theme) => ({
                 textAlign: 'center',
                 fontWeight: 'normal',

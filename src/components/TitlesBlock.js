@@ -43,14 +43,14 @@ const TitlesBlock = ({ title, subtitle }) => {
         }}
       >
         <TitleSquares />
-        <Typography variant="subtitle1" component="h2" textAlign={'center'}>
+        <Typography variant="subtitle1" component="span" textAlign={'center'}>
           {subtitle}
         </Typography>
         <TitleSquares />
       </Box>
       <Typography
         variant="h5"
-        component="h2"
+        component="h3"
         sx={{
           fontWeight: 'bold',
           mb: 8,

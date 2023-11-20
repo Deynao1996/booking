@@ -1,7 +1,8 @@
 import { Drawer } from '@mui/material'
 import SearchBar from '../SearchBar/SearchBar'
 import { useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
 
 const SearchDrawer = ({ searchOpen, handleSearchDrawer, container }) => {
   const location = useLocation()
@@ -19,6 +20,8 @@ const SearchDrawer = ({ searchOpen, handleSearchDrawer, container }) => {
       onClose={() => handleSearchDrawer(false)}
       sx={{
         zIndex: 900,
+        willChange: 'filter',
+        filter: 'hue-rotate(190deg)',
         '& .MuiDrawer-paper': {
           boxSizing: 'border-box',
           width: '100%'

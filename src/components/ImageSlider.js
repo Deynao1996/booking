@@ -55,7 +55,7 @@ const ImageSlider = () => {
           ease: 'power4.inOut'
         },
         onStart: () => {
-          slides.current[current].classList.add('slide--current')
+          slides.current[current]?.classList.add('slide--current')
         },
         onComplete: () => {
           slides.current[previous].classList.remove('slide--current')

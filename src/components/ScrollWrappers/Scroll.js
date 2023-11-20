@@ -6,7 +6,7 @@ const Scroll = (props) => {
   const location = useLocation()
 
   useEffect(() => {
-    new LocomotiveScroll()
+    const loco = new LocomotiveScroll()
   }, [location])
 
   useEffect(() => {

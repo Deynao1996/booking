@@ -19,33 +19,34 @@ const DesktopNav = () => {
       const isActive = pathname === link.to
       const isDisabled = link.isDisabled
       return (
-        <StyledLink to={link.to} key={link.label} disabled={isDisabled}>
-          <Button
-            startIcon={link.icon}
-            role="Link"
-            aria-label="Open-link"
-            sx={(theme) => ({
-              px: 2,
-              color: 'inherit',
-              textDecoration: isActive && !isDisabled ? 'underline' : 'none',
-              textTransform: 'capitalize',
-              cursor: isDisabled ? 'not-allowed' : 'pointer',
-              [theme.breakpoints.down('md')]: {
-                fontSize: theme.spacing(1.5)
-              },
-              '&:hover': {
-                backgroundColor:
-                  theme.palette.mode === 'dark'
-                    ? 'rgba(144, 202, 249, 0.08)'
-                    : 'rgba(0, 0, 0, 0.08)'
-              }
-            })}
-            disabled={isDisabled}
-            variant={'text'}
-          >
-            {link.label}
-          </Button>
-        </StyledLink>
+        <Button
+          startIcon={link.icon}
+          role="Button"
+          component={Link}
+          to={link.to}
+          key={link.label}
+          disabled={isDisabled}
+          aria-label={link.label}
+          sx={(theme) => ({
+            px: 2,
+            color: 'inherit',
+            textDecoration: isActive && !isDisabled ? 'underline' : 'none',
+            textTransform: 'capitalize',
+            cursor: isDisabled ? 'not-allowed' : 'pointer',
+            [theme.breakpoints.down('md')]: {
+              fontSize: theme.spacing(1.5)
+            },
+            '&:hover': {
+              backgroundColor:
+                theme.palette.mode === 'dark'
+                  ? 'rgba(144, 202, 249, 0.08)'
+                  : 'rgba(0, 0, 0, 0.08)'
+            }
+          })}
+          variant={'text'}
+        >
+          {link.label}
+        </Button>
       )
     })
   }

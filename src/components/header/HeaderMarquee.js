@@ -9,6 +9,7 @@ export const HEADER_MARQUEE_HEIGHT = 20
 
 const HeaderMarquee = () => {
   const { theme } = useThemeProvider()
+
   return (
     <Marquee
       autoFill

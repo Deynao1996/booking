@@ -36,7 +36,7 @@ const Collections = () => {
         {marqueeLabels.map((label) => (
           <Typography
             variant="h3"
-            component="span"
+            component="h6"
             key={label}
             sx={(theme) => ({
               textTransform: 'uppercase',

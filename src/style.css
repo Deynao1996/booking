@@ -33,9 +33,18 @@ html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto}.lenis.lenis-smo
 	display: grid;
 	place-items: center;
 	will-change: transform, opacity;
+  animation: scale 10s infinite;
+  animation-delay: 5s;
 }
 
 .slide--current {
 	pointer-events: auto;
 	opacity: 1;
+  
+}
+
+@keyframes scale {
+	0% {scale: 1  }
+	50% { scale: 1.05 }
+  100% { scale: 1 }
 }

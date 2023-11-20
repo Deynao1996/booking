@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import ConfirmDialog from './ConfirmDialog'
-import { Button, DialogActions, Link, Typography } from '@mui/material'
+import { Button, DialogActions, Divider, Link, Typography } from '@mui/material'
 import { useSearchParams } from 'react-router-dom'
 
 const Disclaimer = ({ storageKey = 'block-disclaimer', ...props }) => {
@@ -45,10 +45,12 @@ const Disclaimer = ({ storageKey = 'block-disclaimer', ...props }) => {
             descriptions showcased in this demo have been sourced from{' '}
             <Link href="https://www.booking.com/">Booking.com</Link>. This
             choice has been made to create a more natural and realistic
-            representation of how the booking process would appear. Please
-            understand that this content is used for demonstration purposes only
-            and is not intended for commercial use. Thank you for exploring this
-            demo.
+            representation of how the booking process would appear.
+          </Typography>
+          <Typography mt={2}>
+            Please understand that this content is used for demonstration
+            purposes only and is not intended for commercial use. Thank you for
+            exploring this demo.
           </Typography>
         </>
       )}

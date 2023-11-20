@@ -37,6 +37,7 @@ export function renderProperties(data) {
                     component="img"
                     height="450"
                     image={imageUrl}
+                    loading="lazy"
                     alt={property.type}
                   />
                   <CardContent sx={{ px: 1 }}>
@@ -131,6 +132,7 @@ export function renderHomes(data) {
                   <CardMedia
                     component="img"
                     height="400"
+                    loading="lazy"
                     image={imageUrl}
                     alt={home.name}
                   />

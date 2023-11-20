@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
 import { Close } from '@mui/icons-material'
@@ -23,6 +23,7 @@ const Header = (props) => {
   const { theme } = useThemeProvider()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const navRef = useRef()
   const navigate = useNavigate()
   const isTablet = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -43,10 +44,11 @@ const Header = (props) => {
 
   return (
     <>
-      <HideOnScroll>
+      <HideOnScroll disabled={searchOpen}>
         <AppBar
           component="nav"
           position="sticky"
+          ref={navRef}
           sx={(theme) => ({
             zIndex: '999',
             width: searchOpen ? '100vw' : '100%',
@@ -55,7 +57,9 @@ const Header = (props) => {
                 ? 'rgba(25, 118, 210, 0.8)'
                 : 'rgba(16, 20, 24, 0.8)',
             backdropFilter: 'blur(8px)',
-            transition: 'width 0.2s ease-in-out'
+            willChange: 'filter width',
+            transition: 'width 0.2s ease-in-out',
+            filter: `hue-rotate(${searchOpen ? 190 : 0}deg)`
           })}
         >
           <HeaderMarquee />

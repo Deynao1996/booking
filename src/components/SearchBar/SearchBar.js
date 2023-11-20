@@ -7,14 +7,12 @@ import { useNavigate } from 'react-router-dom'
 import { useSnackbar } from 'notistack'
 import { differenceInDays, isEqual } from 'date-fns'
 import { searchMsgs } from '../../data/messages-data'
-import { useThemeProvider } from '../../contexts/ThemeContext'
 import { HEADER_MARQUEE_HEIGHT } from '../header/HeaderMarquee'
 
 const APPBAR_MD_HEIGHT = 64
 const APPBAR_SM_HEIGHT = 56
 
 const SearchBar = () => {
-  const { theme } = useThemeProvider()
   const { searchParams } = useSearchProvider()
   const { arrivalDate, departureDate } = searchParams
   const navigate = useNavigate()

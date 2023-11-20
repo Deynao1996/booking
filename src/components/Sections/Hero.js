@@ -1,7 +1,5 @@
 import { Box, Button, Typography, useMediaQuery } from '@mui/material'
 import { useThemeProvider } from '../../contexts/ThemeContext'
-import { StyledLink } from '../DesktopNav'
-import SearchBar from '../SearchBar/SearchBar'
 import { Login } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import ImageSlider from '../ImageSlider'
@@ -25,6 +23,7 @@ const Hero = () => {
         px: { xs: 1, sm: 4 },
         py: 4,
         minHeight: '100vh',
+        willChange: 'opacity',
         height: {
           xs: 'auto',
           md: '100vh'
@@ -119,8 +118,13 @@ const Hero = () => {
               component={Link}
               to="/auth/register"
               startIcon={<Login />}
-              role="Link"
-              sx={{ width: { xs: '200px', sm: '300px' } }}
+              role="Button"
+              sx={{
+                width: {
+                  xs: '200px',
+                  sm: '300px'
+                }
+              }}
               size="medium"
             >
               Sign up
