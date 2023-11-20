@@ -50,7 +50,8 @@ const Hero = () => {
             justifyContent: 'center',
             alignItems: 'center',
             position: 'relative',
-            border: `1px solid ${theme.palette.primary.main}`
+            border: `1px solid ${theme.palette.primary.main}`,
+            zIndex: 1
           }}
         >
           <Box

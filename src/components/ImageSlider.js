@@ -1,11 +1,25 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
-import hero1 from '../assets/img/hero/hero-1.jpg'
-import hero2 from '../assets/img/hero/hero-2.jpg'
-import hero3 from '../assets/img/hero/hero-3.jpg'
-import hero4 from '../assets/img/hero/hero-4.jpg'
 import { gsap } from 'gsap'
+import { Box } from '@mui/material'
 
-const slidesArr = [hero4, hero2, hero3, hero1]
+const slidesArr = [
+  {
+    desktopSrc: '/img/hero/hero-4.jpg',
+    mobileSrc: '/img/hero/hero-4-min.jpg'
+  },
+  {
+    desktopSrc: '/img/hero/hero-2.jpg',
+    mobileSrc: '/img/hero/hero-2-min.jpg'
+  },
+  {
+    desktopSrc: '/img/hero/hero-3.jpg',
+    mobileSrc: '/img/hero/hero-3-min.jpg'
+  },
+  {
+    desktopSrc: '/img/hero/hero-1.jpg',
+    mobileSrc: '/img/hero/hero-1-min.jpg'
+  }
+]
 let current = 0
 let slidesTotal = slidesArr.length
 
@@ -107,11 +121,16 @@ const ImageSlider = () => {
           ref={(el) => (slides.current[index] = el)}
           className="slide"
         >
-          <div
+          <Box
             className="slide__img"
             ref={(el) => (slidesInner.current[index] = el)}
-            style={{ backgroundImage: `url(${slide})` }}
-          ></div>
+            sx={{
+              backgroundImage: {
+                xs: `url(${slide.mobileSrc})`,
+                sm: `url(${slide.desktopSrc})`
+              }
+            }}
+          ></Box>
         </div>
       ))}
     </div>

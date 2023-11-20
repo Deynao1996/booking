@@ -2,7 +2,6 @@ import { Box, Button, Paper, Typography } from '@mui/material'
 import { CustomContainer } from '../../pages/MainPage'
 import { TitleSquares } from '../TitlesBlock'
 import { Search } from '@mui/icons-material'
-import artwork from '../../assets/img/artwork.jpg'
 import { Link } from 'react-router-dom'
 import { useThemeProvider } from '../../contexts/ThemeContext'
 
@@ -31,10 +30,18 @@ const Stay = () => {
           }}
         >
           <img
-            src={artwork}
             alt="stay-background"
             data-scroll
+            loading="lazy"
             data-scroll-speed="0.1"
+            srcSet=" 
+                /img/artwork-min.jpg 640w, 
+                /img/artwork.jpg 1030w 
+            "
+            sizes=" 
+                (min-width: 1366px) 916px, 
+                100vw
+            "
             style={{
               objectFit: 'cover',
               width: '120%',

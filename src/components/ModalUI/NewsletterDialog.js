@@ -10,7 +10,6 @@ import {
 } from '@mui/material'
 import { forwardRef } from 'react'
 import { useThemeProvider } from '../../contexts/ThemeContext'
-import newsletter from '../../assets/img/newsletter.jpg'
 import { useNavigate } from 'react-router-dom'
 import { useAuthProvider } from '../../contexts/AuthContext'
 import { newsletterMsgs } from '../../data/messages-data'
@@ -143,7 +142,7 @@ const NewsletterDialog = ({ isNewsletterOpen, handleNewsletter }) => {
         </Box>
         <Box sx={{ flex: 1, display: { xs: 'none', md: 'block' } }}>
           <img
-            src={newsletter}
+            src="/img/newsletter.jpg"
             alt="newsletter"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
