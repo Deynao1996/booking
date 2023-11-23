@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { Close, Search } from '@mui/icons-material'
-import { Container, Fab, Grid, useMediaQuery } from '@mui/material'
+import { Close, Sort } from '@mui/icons-material'
+import { Box, Fab, Grid, useMediaQuery } from '@mui/material'
 import { useState } from 'react'
 import AsideSearchPanel from '../components/AsideSearchPanel'
 import HotelsList from '../components/Lists/HotelsList'
@@ -12,7 +12,7 @@ const StyledFab = styled(Fab)(({ theme }) => ({
   position: 'fixed',
   bottom: 16,
   right: 16,
-  zIndex: theme.zIndex.modal + 1
+  zIndex: 10
 }))
 
 const HotelsPage = () => {
@@ -25,7 +25,14 @@ const HotelsPage = () => {
   }
 
   return (
-    <Container>
+    <Box
+      sx={{
+        maxWidth: { xs: '100%', lg: '80%' },
+        margin: '0 auto',
+        px: { xs: 1, sm: 4 },
+        mb: 2
+      }}
+    >
       <MobileSearchDialog
         toggleDialog={toggleDialog}
         isDialogOpen={isDialogOpen}
@@ -43,7 +50,7 @@ const HotelsPage = () => {
               sx={{ position: 'fixed', bottom: 16, right: 16 }}
               onClick={toggleDialog}
             >
-              {isDialogOpen ? <Close /> : <Search />}
+              {isDialogOpen ? <Close /> : <Sort />}
             </StyledFab>
           </ZoomOnScroll>
         )}
@@ -51,7 +58,7 @@ const HotelsPage = () => {
           <HotelsList />
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   )
 }
 

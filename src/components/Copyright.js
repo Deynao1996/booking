@@ -11,7 +11,7 @@ const Copyright = (props) => {
     >
       {'Copyright © '}
       <StyledBodyLink color="inherit" to="/">
-        Booking
+        Roomify
       </StyledBodyLink>{' '}
       {new Date().getFullYear()}
       {'.'}

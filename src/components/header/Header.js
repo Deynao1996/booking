@@ -17,6 +17,7 @@ import DesktopNav from '../DesktopNav'
 import HeaderActions from './HeaderActions'
 import HeaderMarquee from './HeaderMarquee'
 import SearchDrawer from '../DrawerUI/SearchDrawer'
+import Logo from '../Logo'
 
 const Header = (props) => {
   const { window } = props
@@ -89,17 +90,7 @@ const Header = (props) => {
                 alignItems: 'center'
               }}
             >
-              <Typography
-                variant={isTablet ? 'h4' : 'h6'}
-                component="span"
-                sx={{
-                  cursor: 'pointer',
-                  fontWeight: 'bold'
-                }}
-                onClick={() => navigate('/')}
-              >
-                {isTablet ? 'B' : 'Booking'}
-              </Typography>
+              <Logo />
             </Box>
             <HeaderActions
               handleSearchDrawer={handleSearchDrawer}

@@ -5,10 +5,10 @@ import { fetchHotel } from '../utils/service-utils'
 import { useSearchProvider } from '../contexts/SearchContext'
 import { getDayDifference } from '../utils/dates-utils'
 import Skeleton from '../components/LoadingUI/Skeleton'
-import { Container } from '@mui/material'
 import HotelInfo from '../components/SingleHotel/HotelInfo'
 import ReserveDialog from '../components/ModalUI/ReserveDialog'
 import CustomLightBox from '../components/SingleHotel/CustomLightBox'
+import { Box } from '@mui/material'
 
 import 'react-18-image-lightbox/style.css'
 
@@ -54,7 +54,14 @@ const SingleHotel = () => {
           setBoxState={setBoxState}
         />
       )}
-      <Container>
+      <Box
+        sx={{
+          maxWidth: { xs: '100%', lg: '80%' },
+          margin: '0 auto',
+          px: { xs: 1, sm: 4 },
+          mb: 8
+        }}
+      >
         {isLoading || isCheckoutLoading ? (
           <Skeleton type={'single-hotel'} />
         ) : (
@@ -66,7 +73,7 @@ const SingleHotel = () => {
             {...data.data}
           />
         )}
-      </Container>
+      </Box>
     </>
   )
 }

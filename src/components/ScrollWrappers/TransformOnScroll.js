@@ -8,7 +8,7 @@ const ScrollHandler = (props) => {
 
   return React.cloneElement(props.children, {
     style: {
-      top: trigger ? '16px' : '70px',
+      top: trigger ? '16px' : '90px',
       transition: '0.3s all'
     }
   })

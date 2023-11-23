@@ -1,6 +1,7 @@
 import { Dialog, Slide } from '@mui/material'
 import { forwardRef } from 'react'
 import AsideSearchPanel from '../AsideSearchPanel'
+import zIndex from '@mui/material/styles/zIndex'
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -15,6 +16,7 @@ const MobileSearchDialog = ({ isDialogOpen, toggleDialog }) => {
   return (
     <Dialog
       open={isDialogOpen}
+      sx={{ zIndex: 3 }}
       keepMounted
       fullScreen
       TransitionComponent={Transition}

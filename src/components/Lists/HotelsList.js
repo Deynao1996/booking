@@ -15,7 +15,7 @@ import {
 } from '@mui/material'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { Fragment, useEffect, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useSearchProvider } from '../../contexts/SearchContext'
 import { useIsInViewPort } from '../../hooks/useIsInViewPort'
 import { fetchHouses } from '../../utils/service-utils'
@@ -220,7 +220,7 @@ const View = (props) => {
                   <Button
                     variant="outlined"
                     sx={{ cursor: 'default' }}
-                    role="Presentation"
+                    component="div"
                   >
                     {floatRating}
                   </Button>
@@ -237,16 +237,17 @@ const View = (props) => {
                     </Typography>
                   </>
                 )}
-                <StyledLink to={props._id}>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    size="small"
-                    role="Link"
-                  >
-                    See availability
-                  </Button>
-                </StyledLink>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  component={Link}
+                  to={props._id}
+                  aria-label={`See ${props.name}`}
+                  size="small"
+                  role="Button"
+                >
+                  See availability
+                </Button>
               </div>
             </StyledBox>
           </Grid>

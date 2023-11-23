@@ -113,7 +113,7 @@ const Stay = () => {
               sx={(theme) => ({
                 textAlign: 'center',
                 fontWeight: 'normal',
-                mb: 6,
+                mb: 4,
                 width: { xs: '100%', sm: '80%' },
                 [theme.breakpoints.down('md')]: {
                   fontSize: theme.spacing(2)
@@ -125,6 +125,8 @@ const Stay = () => {
             <Button
               variant="contained"
               component={Link}
+              role="button"
+              aria-label="search hotel"
               to="/houses"
               endIcon={<Search />}
               sx={{ mt: 1, width: { xs: '100%', sm: '40%', md: '40%' } }}

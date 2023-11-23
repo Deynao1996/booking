@@ -125,6 +125,7 @@ const Footer = () => {
               <Button
                 onClick={() => handleNewsletterToggle(true)}
                 variant="contained"
+                aria-label="open newsletter dialog"
                 endIcon={<Euro />}
                 sx={{ width: { xs: '70%', sm: '50%' }, mt: 1 }}
               >

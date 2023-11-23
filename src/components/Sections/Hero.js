@@ -112,7 +112,7 @@ const Hero = () => {
               })}
             >
               Get rewarded for your travels - unlock instant savings of 10% or
-              more with a free Booking account
+              more with a free Roomify account
             </Typography>
             <Button
               variant="contained"

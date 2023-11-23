@@ -102,7 +102,7 @@ const CustomMenu = ({
       anchorEl={anchorEl}
       open={open}
       onClose={handleClose}
-      MenuListProps={{ sx: { p: 0 } }}
+      MenuListProps={{ sx: { p: 0, filter: 'hue-rotate(190deg)' } }}
     >
       <ButtonGroup size="small">
         <Button

@@ -34,6 +34,7 @@ const ReserveDialog = ({
       open={isReserveOpen}
       keepMounted
       scroll="paper"
+      data-lenis-prevent
       onClose={handleCloseDialog}
       fullScreen={isMobile}
       TransitionComponent={Transition}

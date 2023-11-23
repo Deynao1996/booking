@@ -61,6 +61,7 @@ const NewsletterDialog = ({ isNewsletterOpen, handleNewsletter }) => {
     <Dialog
       open={isNewsletterOpen}
       fullScreen={isMobile}
+      data-lenis-prevent
       TransitionComponent={Transition}
       onClose={() => handleNewsletter(false)}
       maxWidth="xl"

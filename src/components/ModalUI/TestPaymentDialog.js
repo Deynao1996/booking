@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   DialogActions,
   IconButton,
@@ -28,34 +29,39 @@ const TestPaymentDialog = ({
         <>
           <Typography>
             To explore and test the credit card payment system functionality in
-            this demo, you can use the following test card number:
+            this demo, you can use the following test{' '}
+            <span style={{ fontWeight: 'bold' }}>card number</span>:
           </Typography>
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            flexWrap="wrap"
-            mt={2}
-            spacing={2}
+          <Box
+            sx={{
+              mt: 2,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
           >
-            <Typography>{`Card Number: ${TEST_CARD_NUMBER}`}</Typography>
-            <Tooltip
-              title={value ? 'Copied!' : 'Copy to clipboard!'}
-              enterTouchDelay={0}
-            >
-              <IconButton
-                size="large"
-                color="inherit"
-                onClick={() => copy(TEST_CARD_NUMBER)}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              {TEST_CARD_NUMBER}
+              <Tooltip
+                title={value ? 'Copied!' : 'Copy to clipboard!'}
+                enterTouchDelay={0}
               >
-                <ContentCopyIcon />
-              </IconButton>
-            </Tooltip>
-          </Stack>
+                <IconButton
+                  size="large"
+                  color="inherit"
+                  onClick={() => copy(TEST_CARD_NUMBER)}
+                >
+                  <ContentCopyIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
 
           <Typography mt={2}>
             Please note that this is a test card number and does not represent a
             real payment method. It is provided for demonstration purposes only.
+          </Typography>
+          <Typography mt={2}>
             You can use it to simulate payment transactions and experience the
             payment process in the application. Thank you for participating in
             our demo and exploring the payment system feature.

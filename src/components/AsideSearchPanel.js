@@ -66,13 +66,23 @@ const AsideSearchPanel = ({ cb }) => {
   return (
     <TransformOnScroll>
       <Paper
-        sx={{ flex: '1 1 266px', p: 1.5, position: 'sticky', top: 70, left: 0 }}
+        sx={{
+          flex: '1 1 266px',
+          p: 1.5,
+          position: 'sticky',
+          top: 70,
+          left: 0,
+          pt: {
+            xs: '90px',
+            md: 0
+          }
+        }}
         component="form"
         onSubmit={handleSubmit}
       >
         <Stack direction="column" spacing={1}>
           <Typography variant="h6" color="primary.main">
-            Search
+            Sort by
           </Typography>
           <CustomAutocomplete variant="standard" />
           <CustomDatePicker

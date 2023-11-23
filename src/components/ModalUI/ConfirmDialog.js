@@ -24,6 +24,7 @@ const ConfirmDialog = ({
 
   return (
     <Dialog
+      data-lenis-prevent
       open={isConfirmDialogOpen}
       TransitionComponent={Transition}
       fullScreen={isMobile}

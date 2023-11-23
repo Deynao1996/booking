@@ -12,33 +12,27 @@ import { navLinks } from '../../data/nav-items-data'
 import styled from '@emotion/styled'
 import MobileHeaderActions from '../header/MobileHeaderActions'
 import Copyright from '../Copyright'
+import { useEffect } from 'react'
 
-const StyledLink = styled(Link, {
-  shouldForwardProp: (prop) => prop !== 'isDisabled'
-})(({ isDisabled }) => ({
-  pointerEvents: isDisabled ? 'none' : 'auto',
-  color: isDisabled ? 'grey' : 'inherit',
-  textDecoration: 'none',
-  width: '100%'
-}))
-
-const HeaderDrawer = ({ handleDrawer, container, mobileOpen }) => {
+const HeaderDrawer = ({ handleMobileDrawer, container, mobileOpen }) => {
   const { pathname } = useLocation()
 
   function renderDrawerItems() {
     return navLinks.map((item) => (
       <ListItem key={item.label} disableGutters>
-        <StyledLink to={item.to} isDisabled={item.isDisabled}>
-          <ListItemButton
-            sx={{
-              textAlign: 'start',
-              textDecoration:
-                pathname === item.to && !item.isDisabled ? 'underline' : 'none'
-            }}
-          >
-            <ListItemText primary={item.label} />
-          </ListItemButton>
-        </StyledLink>
+        <ListItemButton
+          component={Link}
+          to={item.to}
+          onClick={() => handleMobileDrawer(false)}
+          disabled={item.isDisabled}
+          sx={{
+            textAlign: 'start',
+            textDecoration:
+              pathname === item.to && !item.isDisabled ? 'underline' : 'none'
+          }}
+        >
+          <ListItemText primary={item.label} />
+        </ListItemButton>
       </ListItem>
     ))
   }
@@ -72,7 +66,7 @@ const HeaderDrawer = ({ handleDrawer, container, mobileOpen }) => {
         variant="temporary"
         anchor="top"
         open={mobileOpen}
-        onClose={() => handleDrawer(false)}
+        onClose={() => handleMobileDrawer(false)}
         sx={{
           zIndex: 900,
           '& .MuiDrawer-paper': {

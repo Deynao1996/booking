@@ -1,15 +1,14 @@
-# Booking - A Hotel Booking Web Application
+# Roomify - A Hotel Booking Web Application
 
-Booking is a full-stack web application for booking hotels. This repository contains the client part of the application, while the backend part can be found in the [booking-server repository](https://github.com/Deynao1996/booking-server).
+Roomify is a full-stack web application for booking hotels. This repository contains the client part of the application, while the backend part can be found in the [booking-server repository](https://github.com/Deynao1996/booking-server).
 
-Explore Booking, a feature-rich hotel booking platform with dark and light themes, registration, authentication, and additional features such as Google and GitHub authentication, as well as a "forgot password" functionality. It allows users to find hotels, locations, sort prices, and make online payments for their bookings using the Stripe payment system.
+Explore Roomify, a feature-rich hotel booking platform with dark and light themes, registration, authentication, and additional features such as Google and GitHub authentication, as well as a "forgot password" functionality. It allows users to find hotels, locations, sort prices, and make online payments for their bookings using the Stripe payment system.
 
-![Booking Preview 1](https://res.cloudinary.com/dkl9cqqui/image/upload/v1695350394/booking_1_elrgmf.jpg)
-![Booking Preview 2](https://res.cloudinary.com/dkl9cqqui/image/upload/v1695350395/stripe_1_owgnsb.jpg)
+![Roomify Preview 1](https://res.cloudinary.com/dkl9cqqui/image/upload/v1700656039/booking-preview_tsvz7w.jpg)
 
 ## Live Demo
 
-Check out the live demo of Booking: [Booking Live Demo](https://dbvision-booking.netlify.app)
+Check out the live demo of Roomify: [Roomify Live Demo](https://dbvision-booking.netlify.app)
 
 
 Please note that some functionality in this demo has been limited for security reasons. Additionally, hotel images and information were sourced from [Booking.com](https://www.booking.com/) for a realistic demo experience without any commercial goals.
